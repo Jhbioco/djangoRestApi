@@ -63,5 +63,117 @@ REST_FRAMEWORK= {
     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated',)
 }
 ```
+#
+***myrestproject/urls.py***
+```
+from django.contrib import admin
+from django.urls import path, include
 
+urlpatterns = [
+    path('', include('rest.urls')),
+    path('admin/', admin.site.urls),
+    path('auth/', include('rest_framework.urls'))
+]
+```
+#
+**rest/models.py**
+```
+from django.db import models
+
+
+class Category(models.Model):
+    cat_name = models.CharField(max_length=50)
+    cat_salary = models.FloatField(blank=True)
+
+    def __str__(self):
+        return self.cat_name
+
+
+class Department(models.Model):
+    dep_acronym = models.CharField(max_length=10)
+    dep_name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.dep_acronym + ' - ' + self.dep_name
+
+
+class Employee(models.Model):
+    name = models.CharField(max_length=40)
+    department = models.ForeignKey(Department, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+```
+#
+**rest/serializers.py**
+```
+from rest_framework import serializers
+from .models import Employee
+from .models import Department
+from .models import Category
+
+
+class EmployeeSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Employee
+        fields = ('url', 'id', 'name', 'department', 'category')
+
+
+class DepartmentSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Department
+        fields = ('url', 'dep_acronym', 'dep_name')
+
+
+class CategorySerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Category
+        fields = ('url', 'cat_name', 'cat_salary')
+```
+#
+**rest/views.py**
+```
+from rest_framework import viewsets, permissions
+from .models import Employee
+from .models import Department
+from .models import Category
+from .serializers import EmployeeSerializer
+from .serializers import DepartmentSerializer
+from .serializers import CategorySerializer
+
+
+# Create your views here.
+class EmployeeView(viewsets.ModelViewSet):
+    queryset = Employee.objects.all()
+    serializer_class = EmployeeSerializer
+
+
+class DepartmentView(viewsets.ModelViewSet):
+    queryset = Department.objects.all()
+    serializer_class = DepartmentSerializer
+
+
+class CategoryView(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+```
+#
+**rest/urls.py**
+
+Dont forget to create _urls.py_ inside rest folder.
+```
+from django.urls import path, include
+from .import views
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register('employee', views.EmployeeView),
+router.register('department', views.DepartmentView),
+router.register('category', views.CategoryView)
+urlpatterns = [
+    path('', include(router.urls))
+]
+```
 
