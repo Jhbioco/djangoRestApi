@@ -203,5 +203,5 @@ Obs: _login fisrt_
 #
 <img src="https://github.com/Jhbioco/djangoRestApi/blob/master/myrestproject/photos/django-rest-employee.png" heigh=80% width=80% />
 #
-<img src="https://github.com/Jhbioco/djangoRestApi/blob/master/myrestproject/photos/django-rest-employee-idn.png" heigh=80% width=80% />
+<img src="https://github.com/Jhbioco/djangoRestApi/blob/master/myrestproject/photos/django-rest-employee-id.png" heigh=80% width=80% />
 
