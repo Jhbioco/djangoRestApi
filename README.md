@@ -106,6 +106,12 @@ class Employee(models.Model):
     def __str__(self):
         return self.name
 ```
+```
+python manage.py makemigrations
+```
+```
+python manage.py migrate
+```
 #
 **rest/serializers.py**
 ```
@@ -176,4 +182,20 @@ urlpatterns = [
     path('', include(router.urls))
 ]
 ```
+And now:
+```
+python manage.py runserver
+Performing system checks...
 
+System check identified no issues (0 silenced).
+February 25, 2019 - 13:25:41
+Django version 2.1.7, using settings 'myrestproject.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+```
+We now can go to the browser and write:
+```
+localhost:8000
+```
+Obs: _login fisrt_
+<src= heigh=50% width=50% />
