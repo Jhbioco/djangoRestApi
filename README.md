@@ -1,5 +1,5 @@
 # DRF
-A basic employee-api with django rest framework.
+**A basic employee-api with django rest framework.**
 # First Steps
 Before starting the web api based on django rest framework its necessary install all dependencies as we always do when start developing django projects. Good practices says that we have to setup a new python environment for each time we start a django project.
 ```
@@ -200,8 +200,14 @@ localhost:8000
 Obs: _login fisrt_
 
 <img src="https://github.com/Jhbioco/djangoRestApi/blob/master/myrestproject/photos/django-rest-main.png" heigh=80% width=80% />
-#
+
 <img src="https://github.com/Jhbioco/djangoRestApi/blob/master/myrestproject/photos/django-rest-employee.png" heigh=80% width=80% />
-#
+
 <img src="https://github.com/Jhbioco/djangoRestApi/blob/master/myrestproject/photos/django-rest-employee-id.png" heigh=80% width=80% />
+
+**Congratulations!** This is your first rest api made with django rest framework (DRF)
+
+Feel free to download this base project and continue implementing this rest api for your personal purposes.
+
+For more information visit: https://www.django-rest-framework.org/
 
