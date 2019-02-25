@@ -198,4 +198,5 @@ We now can go to the browser and write:
 localhost:8000
 ```
 Obs: _login fisrt_
-<src="https://github.com/Jhbioco/djangoRestApi/blob/master/myrestproject/photos/django-rest-main.png" heigh=50% width=50% />
+
+<img src="https://github.com/Jhbioco/djangoRestApi/blob/master/myrestproject/photos/django-rest-main.png" heigh=50% width=50% />
